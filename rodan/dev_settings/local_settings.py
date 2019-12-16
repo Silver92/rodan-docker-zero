@@ -1,7 +1,7 @@
 from mirrored_rodan_settings import *  # noqa
 
 
-RODAN_PYTHON3_JOBS = [
+TEST_JOB_PACKAGES = [
     "rodan.jobs.helloworld",
 ]
 
@@ -16,6 +16,11 @@ ENABLE_DIVA = False
 
 # STOP: don't edit further
 ##############################
+
+# Append TEST_JOB_PACKAGES to RODAN_JOB_PACKAGES
+for job_package in TEST_JOB_PACKAGES:
+    if job_package not in RODAN_JOB_PACKAGES:
+        RODAN_JOB_PACKAGES.append(job_package)
 
 # Monkey-patch django.setup() so that we won't run into hanging issues with
 # the setup() call in rodan/__init__.py => rodan/celery.py
